@@ -32,11 +32,11 @@ def add_user(name: str, age: int, hobby = "None"):
     print(f"{name} - добавили")
 
 
-add_user("Chyngyz", 26, "Спать")
-add_user("User1", 26, "Спать")
-add_user("User2", 26, "Спать")
-add_user("User3", 26, "Спать")
-add_user("User4", 26, "Спать")
+# add_user("Chyngyz", 26, "Спать")
+# add_user("User1", 26, "Спать")
+# add_user("User2", 26, "Спать")
+# add_user("User3", 26, "Спать")
+# add_user("User4", 26, "Спать")
 
 
 def get_all_users():
@@ -66,4 +66,18 @@ def delete_user(rowid):
     connect.commit()
     print("Пользователь удален!!")
 
-# delete_user(5)
+# delete_user(2)
+
+def get_user_by_id(user_id):
+
+    cursor.execute("SELECT * FROM users WHERE rowid = ?", (user_id,))
+    user = cursor.fetchone()
+
+    if user:
+        print(f"ID: {user[0]}, NAME: {user[1]}, AGE: {user[2]}, HOBBY: {user[3]}")
+
+    else:
+        print(None)
+
+get_user_by_id(10)
+
